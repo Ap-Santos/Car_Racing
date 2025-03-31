@@ -13,6 +13,7 @@ ENTITY_DAMAGE = {
     'Player': 0,
     'Enemy1': 1,
     'Enemy2': 1,
+    'Enemy3': 1,
 }
 
 ENTITY_HEALTH = {
@@ -20,6 +21,7 @@ ENTITY_HEALTH = {
     'Player': 3,
     'Enemy1': 1,
     'Enemy2': 1,
+    'Enemy3': 1,
 }
 
 ENTITY_SPEED = {
@@ -27,6 +29,7 @@ ENTITY_SPEED = {
     'Player': 8,
     'Enemy1': 4,
     'Enemy2': 4,
+    'Enemy3': 4
 }
 
 # Eventos
@@ -43,6 +46,6 @@ PLAYER_KEY_RIGHT = {'Player': pygame.K_RIGHT}
 # Configurações
 SPAWN_TIME = 3000
 TIMEOUT_STEP = 1
-TIMEOUT_LEVEL = 20000
+TIMEOUT_LEVEL = 60000
 WIN_WIDTH = 840
 WIN_HEIGHT = 650

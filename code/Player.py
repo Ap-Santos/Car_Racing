@@ -6,9 +6,14 @@ class Player(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
 
+    def carSound(self):
+       pass
+
+
     def move(self):
+        self.carSound()
         pressed_key = pygame.key.get_pressed()
-        if pressed_key[PLAYER_KEY_LEFT[self.name]] and self.rect.left > 0:
+        if pressed_key[PLAYER_KEY_LEFT[self.name]] and self.rect.left > 130:
             self.rect.centerx -= ENTITY_SPEED[self.name]
-        if pressed_key[PLAYER_KEY_RIGHT[self.name]] and self.rect.right < WIN_WIDTH:
+        elif pressed_key[PLAYER_KEY_RIGHT[self.name]] and self.rect.right < WIN_WIDTH -130:
             self.rect.centerx += ENTITY_SPEED[self.name]

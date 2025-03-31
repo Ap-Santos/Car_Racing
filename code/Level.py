@@ -21,8 +21,13 @@ class Level:
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
     def run(self):
-        level_music = pygame.mixer.Sound('./assets/Level1.mp3')
-        level_music.play(loops=-1)
+        car_sound = pygame.mixer.Sound('./assets/carSound.mp3')
+        pygame.mixer.music.load('./assets/Level1.mp3')
+        pygame.mixer.music.play(loops=-1)  # Loop infinito
+
+        car_sound.set_volume(0.5)  # ajusta o volume do som 50%
+        pygame.mixer.music.set_volume(0.9)  # Ajusta volume da musica 70%
+        car_sound.play(loops=-1)  # Faz o som do carro repetir continuamente
 
         clock = pygame.time.Clock()
         while True:
@@ -34,13 +39,14 @@ class Level:
                     pygame.quit()
                     sys.exit()
                 if event.type == EVENT_ENEMY:
-                    enemy = EntityFactory.get_entity(random.choice(('Enemy1', 'Enemy2')))
+                    enemy = EntityFactory.get_entity(random.choice(('Enemy1', 'Enemy2', 'Enemy3')))
                     if enemy:
                         self.entity_list.append(enemy)
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout <= 0:
-                        level_music.stop()
+                        pygame.mixer.music.stop()
+                        car_sound.stop()
                         return 'win'
                     if not any(isinstance(ent, Player) for ent in self.entity_list):
                         return 'lose'
@@ -53,14 +59,16 @@ class Level:
             EntityMediator.verify_health(self.entity_list)
 
             if not any(isinstance(ent, Player) for ent in self.entity_list):
-                level_music.stop()
+                pygame.mixer.music.stop()
+                car_sound.stop()
                 return False
             self.level_text(40, f'{self.name} - TIMEOUT: {self.timeout / 1000:.1f}s', C_WHITE, (10, 5))
-            # self.level_text(14, f'FPS: {clock.get_fps():.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
+            self.level_text(14, f'FPS: {clock.get_fps():.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
             # self.level_text(14, f'Entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
 
-    def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
-        font = Font(None, text_size)
-        text_surf = font.render(text, True, text_color)
-        self.screen.blit(text_surf, text_pos)
+
+def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
+    font = Font(None, text_size)
+    text_surf = font.render(text, True, text_color)
+    self.screen.blit(text_surf, text_pos)
