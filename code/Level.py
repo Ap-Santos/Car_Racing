@@ -68,7 +68,7 @@ class Level:
             pygame.display.flip()
 
 
-def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
-    font = Font(None, text_size)
-    text_surf = font.render(text, True, text_color)
-    self.screen.blit(text_surf, text_pos)
+    def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
+        font = Font(None, text_size)
+        text_surf = font.render(text, True, text_color)
+        self.screen.blit(text_surf, text_pos)
