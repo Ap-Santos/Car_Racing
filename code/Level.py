@@ -26,7 +26,7 @@ class Level:
         pygame.mixer.music.play(loops=-1)  # Loop infinito
 
         car_sound.set_volume(0.5)  # ajusta o volume do som 50%
-        pygame.mixer.music.set_volume(0.9)  # Ajusta volume da musica 70%
+        pygame.mixer.music.set_volume(0.9)  # Ajusta volume da musica 90%
         car_sound.play(loops=-1)  # Faz o som do carro repetir continuamente
 
         clock = pygame.time.Clock()
