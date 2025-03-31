@@ -37,14 +37,12 @@ EVENT_TIMEOUT = pygame.USEREVENT + 2
 MENU_OPTION = ('NEW GAME', 'EXIT')
 
 # Controles
-#PLAYER_KEY_UP = {'Player': pygame.K_UP}
-#PLAYER_KEY_DOWN = {'Player': pygame.K_DOWN}
 PLAYER_KEY_LEFT = {'Player': pygame.K_LEFT}
 PLAYER_KEY_RIGHT = {'Player': pygame.K_RIGHT}
 
 # Configurações
 SPAWN_TIME = 3000
 TIMEOUT_STEP = 1
-TIMEOUT_LEVEL = 10000
+TIMEOUT_LEVEL = 20000
 WIN_WIDTH = 840
 WIN_HEIGHT = 650

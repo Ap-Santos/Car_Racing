@@ -2,7 +2,7 @@ import pygame
 from pygame import Surface
 from pygame.font import Font
 
-from .Const import C_GREEN, C_WHITE, WIN_WIDTH, WIN_HEIGHT
+from .Const import C_WHITE, WIN_WIDTH, WIN_HEIGHT, C_ORANGE
 
 
 class WinScreen:
@@ -11,10 +11,11 @@ class WinScreen:
         self.surf = pygame.Surface((WIN_WIDTH, WIN_HEIGHT))
         self.surf.fill((0, 0, 0))
         self.rect = self.surf.get_rect()
+        self.surf = pygame.image.load('./assets/WinBg.jpg').convert()
 
     def run(self):
-        musica = pygame.mixer.Sound('./assets/Win.mp3')
-        musica.play(loops=-1)
+        music= pygame.mixer.Sound('./assets/Win.mp3')
+        music.play(loops=-1)
 
         try:
             win_sound = pygame.mixer.Sound('./assets/Win.wav')
@@ -26,8 +27,8 @@ class WinScreen:
             self.screen.blit(self.surf, self.rect)
 
             # Texto de vitória
-            self.draw_text(50, "Congratulations!", C_GREEN, (WIN_WIDTH / 2, WIN_HEIGHT / 2 - 50))
-            self.draw_text(30, "You Win!", C_WHITE, (WIN_WIDTH / 2, WIN_HEIGHT / 2 + 20))
+            self.draw_text(100, "Congratulations!", C_ORANGE, (WIN_WIDTH / 2, WIN_HEIGHT / 2 - 50))
+            self.draw_text(50, "You Win!", C_WHITE, (WIN_WIDTH / 2, WIN_HEIGHT / 2 + 20))
             self.draw_text(25, "Press ESPACE...", C_WHITE, (WIN_WIDTH / 2, WIN_HEIGHT / 2 + 100))
 
             pygame.display.flip()
@@ -38,6 +39,8 @@ class WinScreen:
                     return False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
+                        music.stop()
+
                         return True
 
     def draw_text(self, size: int, text: str, color: tuple, center_pos: tuple):

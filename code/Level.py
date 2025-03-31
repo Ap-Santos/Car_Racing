@@ -41,7 +41,7 @@ class Level:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout <= 0:
                         level_music.stop()
-                        return  'win'
+                        return 'win'
                     if not any(isinstance(ent, Player) for ent in self.entity_list):
                         return 'lose'
 
@@ -56,8 +56,8 @@ class Level:
                 level_music.stop()
                 return False
             self.level_text(40, f'{self.name} - TIMEOUT: {self.timeout / 1000:.1f}s', C_WHITE, (10, 5))
-            self.level_text(14, f'FPS: {clock.get_fps():.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
-            self.level_text(14, f'Entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
+            # self.level_text(14, f'FPS: {clock.get_fps():.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
+            # self.level_text(14, f'Entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):

@@ -6,7 +6,7 @@ class Enemy(Entity):
         super().__init__(name, position)
 
     def move(self):
-        self.rect.centery += ENTITY_SPEED[self.name]  # Movimento para baixo
-        # Remove o inimigo quando sair da tela (opcional)
+        self.rect.centery += ENTITY_SPEED[self.name]
+        # Remove o inimigo quando sair da tela
         if self.rect.top > WIN_HEIGHT:
             self.health = 0

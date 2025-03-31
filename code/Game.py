@@ -8,7 +8,7 @@ from .WinScreen import WinScreen
 class Game:
     def __init__(self):
         pygame.init()
-        pygame.display.set_caption("Corrida 2D")
+        pygame.display.set_caption("Car Racing")
         self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 
     def run(self):
